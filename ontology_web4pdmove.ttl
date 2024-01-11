@@ -1,0 +1,1077 @@
+@prefix : <http://w3id.org/Wear4PDmove/onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/Wear4PDmove/onto#> .
+
+<http://w3id.org/Wear4PDmove/onto> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://w3id.org/Wear4PDmove/onto/1.0.0> ;
+                                    owl:imports <http://www.case.edu/PMDO> ,
+                                                <http://www.w3.org/ns/sosa/> ,
+                                                <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/> ;
+                                    <http://purl.org/dc/terms/contributor> "Nikolaos Zafeiropoulos" ,
+                                                                           "Pavlos Bitilis" ;
+                                    <http://purl.org/dc/terms/created> "05-05-2023" ;
+                                    <http://purl.org/dc/terms/creator> "Konstantinos Kotis" ;
+                                    <http://purl.org/dc/terms/description> "Wear4PDmove: an ontology for knowledge-based personalized health monitoring of PD patients" ;
+                                    <http://purl.org/dc/terms/license> "CC0" ;
+                                    rdfs:comment "The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event)." ;
+                                    rdfs:label "Wear4PDmoveOnto"@en ;
+                                    owl:versionInfo "v1.0.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/Wear4PDmove/onto#consistsOf
+:consistsOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :PersonalHealthRecord ;
+            rdfs:label "consists of"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasDosageTime
+:hasDosageTime rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <https://saref.etsi.org/core/hasTime> ;
+               rdfs:domain :DailyDosagePlan ;
+               rdfs:range :DosageTime ;
+               rdfs:comment "the dosing time of a patient"@en ;
+               rdfs:label "has Dosage Time"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord
+:hasPersonalHealthRecord rdf:type owl:ObjectProperty ;
+                         owl:inverseOf :recordBelongsToPatient ;
+                         rdfs:domain :Patient ;
+                         rdfs:range :PersonalHealthRecord ;
+                         rdfs:comment "patient has a health record"@en ;
+                         rdfs:label "has Personal Health Record"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#isPerformedBy
+:isPerformedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :performs ;
+               rdfs:label "is Performed By" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#performs
+:performs rdf:type owl:ObjectProperty ;
+          rdfs:domain :Patient ;
+          rdfs:range <http://www.case.edu/MDO#ActivitiesofDailyLiving> ;
+          rdfs:comment "human (patient) performs an action (ADL)" ;
+          rdfs:label "performs" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient
+:recordBelongsToPatient rdf:type owl:ObjectProperty ;
+                        rdfs:label "record Belongs To Patient"@en .
+
+
+###  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> rdfs:label "hasFeatureOfInterest"@en .
+
+
+###  http://www.w3.org/ns/sosa/madeBySensor
+<http://www.w3.org/ns/sosa/madeBySensor> rdfs:label "madeBySensor"@en .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+<http://www.w3.org/ns/sosa/observedProperty> rdfs:label "observedProperty"@en .
+
+
+###  http://www.w3.org/ns/sosa/observes
+<http://www.w3.org/ns/sosa/observes> rdfs:label "observes"@en .
+
+
+###  https://saref.etsi.org/core/isMeasuredByDevice
+<https://saref.etsi.org/core/isMeasuredByDevice> rdfs:label "is Measured By Device"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/Wear4PDmove/onto#ageOfPatient
+:ageOfPatient rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:range xsd:integer ;
+              rdfs:comment "the age of a patient"@en ;
+              rdfs:label "age of patient"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#bodyMassIndex
+:bodyMassIndex rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:decimal ;
+               rdfs:label "body mass index"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#diseaseDuration
+:diseaseDuration rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:range xsd:integer ;
+                 rdfs:label "disease duration"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasAkinesia
+:hasAkinesia rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:range xsd:boolean ;
+             rdfs:label "has Akinesia"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasAnxiety
+:hasAnxiety rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:boolean ;
+            rdfs:label "has Anxiety"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp
+:hasBradykinisiaOfUpperLimp rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:range xsd:boolean ;
+                            rdfs:label "has bradykinisia of upper limp"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasDepression
+:hasDepression rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:boolean ;
+               rdfs:label "has depression"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasDysphagia
+:hasDysphagia rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:range xsd:boolean ;
+              rdfs:label "has dysphagia"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasFatigue
+:hasFatigue rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:boolean ;
+            rdfs:label "has fatigue"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasFreezingOfGait
+:hasFreezingOfGait rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:label "has freezing of gait"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasPosturalInstability
+:hasPosturalInstability rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:range xsd:boolean ;
+                        rdfs:label "has postural instability"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasRigidity
+:hasRigidity rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:range xsd:boolean ;
+             rdfs:label "has rigidity"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasSleepDisturbances
+:hasSleepDisturbances rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:range xsd:boolean ;
+                      rdfs:label "has sleep disturbances"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#hasTremor
+:hasTremor rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:range xsd:boolean ;
+           rdfs:label "has tremor"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#heartRate
+:heartRate rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:range xsd:decimal ;
+           rdfs:label "heart rate"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#levelHoehnYahrStage
+:levelHoehnYahrStage rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:range xsd:integer ;
+                     rdfs:label "level Hoehn Yahr stage"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#obsAfterDosing
+:obsAfterDosing rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:boolean ;
+                rdfs:comment "Check if observation is taken 30 min after the last dosage of dosage plan" ;
+                rdfs:label "observation after dosing"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#scoreUPDRS
+:scoreUPDRS rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:decimal ;
+            rdfs:label "score UPDRS"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#sendNotification
+:sendNotification rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :AlertingNotification ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:label "send notification"@en .
+
+
+###  http://www.w3.org/ns/sosa/resultTime
+<http://www.w3.org/ns/sosa/resultTime> rdfs:label "result time"@en .
+
+
+###  https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/hasAxis
+<https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/hasAxis> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:label "has Axis"@en .
+
+
+###  https://saref.etsi.org/core/hasTimestamp
+<https://saref.etsi.org/core/hasTimestamp> rdfs:label "dose time" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/Wear4PDmove/onto#AlertingNotification
+:AlertingNotification rdf:type owl:Class ;
+                      rdfs:subClassOf <https://saref.etsi.org/core/ActuatingFunction> ;
+                      rdfs:comment "Alerting Notification Function for event" ;
+                      rdfs:label "Alerting Notification Function" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#DailyDosagePlan
+:DailyDosagePlan rdf:type owl:Class ;
+                 rdfs:subClassOf :MedicalPrescription ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasDosageTime ;
+                                   owl:someValuesFrom :DosageTime
+                                 ] ;
+                 rdfs:comment "Daily dosage plan for patient (4 times one day)" ;
+                 rdfs:label "Daily Dosage Plan" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#Diagnosis
+:Diagnosis rdf:type owl:Class ;
+           rdfs:subClassOf :PersonalHealthRecord ;
+           rdfs:comment "diagnosis of disease of a patient in one appointment" ;
+           rdfs:label "Diagnosis" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#DosageTime
+:DosageTime rdf:type owl:Class ;
+            rdfs:subClassOf <https://saref.etsi.org/core/Time> ;
+            rdfs:comment "Dosage time on datetime" ;
+            rdfs:label "Dosage Time (time in one day)" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#MedicalPrescription
+:MedicalPrescription rdf:type owl:Class ;
+                     rdfs:subClassOf :PersonalHealthRecord ;
+                     rdfs:comment "Medical Prescription for Patient" ;
+                     rdfs:label "Medical Prescription" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#NotifyDoctor
+:NotifyDoctor rdf:type owl:Class ;
+              rdfs:subClassOf :AlertingNotification ;
+              rdfs:comment "Notify doctor for event (alert notification)" ;
+              rdfs:label "Notify Doctor" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD_Patient
+:PD_Patient rdf:type owl:Class ;
+            rdfs:subClassOf :Patient ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasPersonalHealthRecord ;
+                              owl:someValuesFrom :PersonalHealthRecord
+                            ] ;
+            rdfs:comment "PD patient" ;
+            rdfs:label "PD Patient" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation
+:PDpatientFalllingEventObservation rdf:type owl:Class ;
+                                   rdfs:subClassOf :RecognizedEvent ;
+                                   rdfs:comment "Falling event observation for PD Patient" ;
+                                   rdfs:label "PD patient Fallling Event Observation" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation
+:PDpatientMissingDoseEventObservation rdf:type owl:Class ;
+                                      rdfs:subClassOf :RecognizedEvent ;
+                                      rdfs:comment "Missing dose event observation for PD Patient" ;
+                                      rdfs:label "PD patient Missing Dose Event Observation" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#Patient
+:Patient rdf:type owl:Class ;
+         rdfs:subClassOf <http://schema.org/Person> ;
+         rdfs:comment "Any kind of patient" ;
+         rdfs:label "Patient" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord
+:PersonalHealthRecord rdf:type owl:Class ;
+                      rdfs:comment "Personal Health Record of a patient" ;
+                      rdfs:label "Personal Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#RecognizedEvent
+:RecognizedEvent rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> ;
+                 rdfs:comment "An observation of a recognized event for a PD Patient" ;
+                 rdfs:label "PD patient recognized event observation" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SketchingActivity
+:SketchingActivity rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.case.edu/MDO#ActivitiesofDailyLiving> ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <https://saref.etsi.org/core/isMeasuredByDevice> ;
+                                     owl:someValuesFrom :SmartWatch
+                                   ] ;
+                   rdfs:comment "An activity followed by the patient during his free time, using his hands (sketching)."@en ;
+                   rdfs:label "Sketching Activity"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SmartWatch
+:SmartWatch rdf:type owl:Class ;
+            rdfs:subClassOf <https://saref.etsi.org/saref4wear/OnBodyWearable> ;
+            rdfs:comment "An off-the-shelf smart watch with sensors able to measure movement"@en ;
+            rdfs:label "Smart Watch"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#WalkingActivity
+:WalkingActivity rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.case.edu/MDO#ActivitiesofDailyLiving> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://saref.etsi.org/core/isMeasuredByDevice> ;
+                                   owl:someValuesFrom :SmartWatch
+                                 ] ;
+                 rdfs:comment "An activity followed by the patient during his free time, using his hands (walking)."@en ;
+                 rdfs:label "Walking Activity"@en .
+
+
+###  http://www.case.edu/MDO#ActivitiesofDailyLiving
+<http://www.case.edu/MDO#ActivitiesofDailyLiving> rdf:type owl:Class .
+
+
+###  http://www.case.edu/MDO#Tremor
+<http://www.case.edu/MDO#Tremor> rdf:type owl:Class ;
+                                 rdfs:comment "symptom of PD, usually observed at patient's hands"@en ;
+                                 rdfs:label "Tremor"@en .
+
+
+###  http://www.case.edu/PMDO#BradykinesiaofUpperLimb
+<http://www.case.edu/PMDO#BradykinesiaofUpperLimb> rdf:type owl:Class ;
+                                                   rdfs:comment "symptom of PD, usually observed at patient's legs"@en ;
+                                                   rdfs:label "Bradykinesia of Upper Limb"@en .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+<http://www.w3.org/ns/sosa/FeatureOfInterest> owl:equivalentClass <https://saref.etsi.org/core/FeatureOfInterest> .
+
+
+###  https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration
+<https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration> rdfs:label "Wearable Acceleration"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/Wear4PDmove/onto#Acc22-sensor
+:Acc22-sensor rdf:type owl:NamedIndividual ,
+                       <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer> ;
+              <http://www.w3.org/ns/sosa/observes> :Wearable_Acceleration_for_PD_movement ;
+              rdfs:label "Samsung Sensor Accelerometer 22" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#BradykinisiaUpperLimpForPDpatient
+:BradykinisiaUpperLimpForPDpatient rdf:type owl:NamedIndividual ,
+                                            <http://www.case.edu/PMDO#BradykinesiaofUpperLimb> ;
+                                   rdfs:label "Bradykinisia Upper Limp for PDpatient" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#DailyDosagePlan3Times
+:DailyDosagePlan3Times rdf:type owl:NamedIndividual ,
+                                :DailyDosagePlan ;
+                       rdfs:label "Daily Dosage Plan 3 Times" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#DailyDosagePlan4Times
+:DailyDosagePlan4Times rdf:type owl:NamedIndividual ,
+                                :DailyDosagePlan ;
+                       rdfs:label "Daily Dosage Plan 4 Times" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#FallingNotification
+:FallingNotification rdf:type owl:NamedIndividual ,
+                              :NotifyDoctor ;
+                     rdfs:label "Falling Notification" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#MissingDoseNotification
+:MissingDoseNotification rdf:type owl:NamedIndividual ,
+                                  :NotifyDoctor ;
+                         rdfs:label "Missing Dose Notification" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-001
+:PD-patient-Observation-001 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-001 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "false"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <http://www.w3.org/ns/sosa/resultTime> "2022-07-06T12:36:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-001" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-002
+:PD-patient-Observation-002 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-002 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-002" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-003
+:PD-patient-Observation-003 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-003 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-003" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-004
+:PD-patient-Observation-004 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-004 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "true"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-004" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-005
+:PD-patient-Observation-005 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-005 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "true"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-005" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-006
+:PD-patient-Observation-006 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-006 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-006" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-007
+:PD-patient-Observation-007 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-007 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-007" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-008
+:PD-patient-Observation-008 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-008 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "false"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-008" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-009
+:PD-patient-Observation-009 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-009 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "true"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-009" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PD-patient-Observation-010
+:PD-patient-Observation-010 rdf:type owl:NamedIndividual ,
+                                     <http://www.w3.org/ns/sosa/Observation> ;
+                            <http://www.w3.org/ns/sosa/hasFeatureOfInterest> :PDpatient-010 ,
+                                                                             :PatientMovement ;
+                            <http://www.w3.org/ns/sosa/madeBySensor> :Acc22-sensor ;
+                            <http://www.w3.org/ns/sosa/observedProperty> :BradykinisiaUpperLimpForPDpatient ,
+                                                                         :TremorForPDPatient ,
+                                                                         :Wearable_Acceleration_for_PD_movement ;
+                            :ageOfPatient 10 ;
+                            :bodyMassIndex 12.9 ;
+                            :diseaseDuration 11 ;
+                            :hasAkinesia "true"^^xsd:boolean ;
+                            :hasAnxiety "true"^^xsd:boolean ;
+                            :hasBradykinisiaOfUpperLimp "true"^^xsd:boolean ;
+                            :hasDepression "false"^^xsd:boolean ;
+                            :hasDysphagia "false"^^xsd:boolean ;
+                            :hasFatigue "true"^^xsd:boolean ;
+                            :hasFreezingOfGait "false"^^xsd:boolean ;
+                            :hasPosturalInstability "true"^^xsd:boolean ;
+                            :hasRigidity "true"^^xsd:boolean ;
+                            :hasSleepDisturbances "false"^^xsd:boolean ;
+                            :hasTremor "false"^^xsd:boolean ;
+                            :heartRate 12.8 ;
+                            :levelHoehnYahrStage 12 ;
+                            :obsAfterDosing "true"^^xsd:boolean ;
+                            :scoreUPDRS 12.5 ;
+                            <https://saref.etsi.org/core/hasTimestamp> "2022-08-04T12:42:12.150Z"^^xsd:dateTime ;
+                            rdfs:label "PDpatient Observation-010" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-001
+:PDpatient-001 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :PDpatient-001HealthRecord ;
+               :performs :SketchingActivity-01 ;
+               rdfs:comment "A specific PD patient observed during a specific  observation."@en ;
+               rdfs:label "PDpatient-001"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-001HealthRecord
+:PDpatient-001HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-001 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-002
+:PDpatient-002 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-002HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-002" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-002HealthRecord
+:PDpatient-002HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-002 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-003
+:PDpatient-003 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-003HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-003" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-003HealthRecord
+:PDpatient-003HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-003 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-004
+:PDpatient-004 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-004HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-004" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-004HealthRecord
+:PDpatient-004HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-004 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-005
+:PDpatient-005 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-005HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-005" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-005HealthRecord
+:PDpatient-005HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-005 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-006
+:PDpatient-006 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-006HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-006" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-006HealthRecord
+:PDpatient-006HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-006 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-007
+:PDpatient-007 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-007HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-007" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-007HealthRecord
+:PDpatient-007HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-007 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-008
+:PDpatient-008 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-008HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-008" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-008HealthRecord
+:PDpatient-008HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-008 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-009
+:PDpatient-009 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-009HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-009" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-009HealthRecord
+:PDpatient-009HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-009 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-010
+:PDpatient-010 rdf:type owl:NamedIndividual ,
+                        :PD_Patient ,
+                        <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+               :hasPersonalHealthRecord :DailyDosagePlan4Times ,
+                                        :PDpatient-010HealthRecord ;
+               :performs :SketchingActivity-02 ;
+               rdfs:label "PDpatient-010" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PDpatient-010HealthRecord
+:PDpatient-010HealthRecord rdf:type owl:NamedIndividual ,
+                                    :PersonalHealthRecord ;
+                           rdfs:label "PDpatient-010 Health Record" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#PatientMovement
+:PatientMovement rdf:type owl:NamedIndividual ,
+                          <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                 rdfs:comment "Recording PD patient movement from wearables"@en ;
+                 rdfs:label "Patient Movement"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SamsungGalaxyWatch-46MM-SM-R800
+:SamsungGalaxyWatch-46MM-SM-R800 rdf:type owl:NamedIndividual ,
+                                          :SmartWatch ;
+                                 rdfs:label "Samsung Galaxy Watch 46MM-SM-R800"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SketchingActivity-01
+:SketchingActivity-01 rdf:type owl:NamedIndividual ,
+                               :SketchingActivity ;
+                      rdfs:label "SketchingActivity-01" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SketchingActivity-02
+:SketchingActivity-02 rdf:type owl:NamedIndividual ,
+                               :SketchingActivity ;
+                      rdfs:label "SketchingActivity-02" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#TimeOfFirstDosage
+:TimeOfFirstDosage rdf:type owl:NamedIndividual ,
+                            :DosageTime ;
+                   <https://saref.etsi.org/core/hasTimestamp> "08:00" ;
+                   rdfs:label "Time of First Dosage" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#TimeOfFourthDosage
+:TimeOfFourthDosage rdf:type owl:NamedIndividual ,
+                             :DosageTime ;
+                    <https://saref.etsi.org/core/hasTimestamp> "20:00" ;
+                    rdfs:label "Time of Forth Dosage" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#TimeOfSecondDosage
+:TimeOfSecondDosage rdf:type owl:NamedIndividual ,
+                             :DosageTime ;
+                    <https://saref.etsi.org/core/hasTimestamp> "12:00" ;
+                    rdfs:label "Time of Second Dosage" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#TimeOfThirdDosage
+:TimeOfThirdDosage rdf:type owl:NamedIndividual ,
+                            :DosageTime ;
+                   <https://saref.etsi.org/core/hasTimestamp> "16:00" ;
+                   rdfs:label "Time of Third Dosage" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#TremorForPDPatient
+:TremorForPDPatient rdf:type owl:NamedIndividual ,
+                             <http://www.case.edu/MDO#Tremor> ;
+                    rdfs:label "Tremor for PDpatient" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#Wearable_Acceleration_for_PD_movement
+:Wearable_Acceleration_for_PD_movement rdf:type owl:NamedIndividual ,
+                                                <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration> ;
+                                       <http://www.w3.org/ns/sosa/observedProperty> :Wearable_Acceleration_for_PD_movement ;
+                                       rdfs:label "Wearable Acceleration for PD movement"@en .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<urn:swrl:var#obs> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S3" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.w3.org/ns/sosa/Observation> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasBradykinisiaOfUpperLimp ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/ns/sosa/observedProperty> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :BradykinisiaUpperLimpForPDpatient
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :obsAfterDosing ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :sendNotification ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :MissingDoseNotification ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :PDpatientMissingDoseEventObservation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs>
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S4" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.w3.org/ns/sosa/Observation> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/ns/sosa/observedProperty> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :TremorForPDPatient
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :obsAfterDosing ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasTremor ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :sendNotification ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :MissingDoseNotification ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :PDpatientMissingDoseEventObservation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#obs>
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
