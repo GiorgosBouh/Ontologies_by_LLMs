@@ -1,0 +1,58 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix pd: <http://example.org/ontology/parkinsons#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+# Classes
+pd:ParkinsonsDisease rdf:type owl:Class .
+
+pd:Patient rdf:type owl:Class ;
+           rdfs:subClassOf foaf:Person .
+
+pd:WearableSensor rdf:type owl:Class ;
+                  rdfs:subClassOf sosa:Sensor .
+
+pd:MovementData rdf:type owl:Class .
+
+pd:DiseaseSeverity rdf:type owl:Class ;
+                   rdfs:subClassOf pd:ParkinsonsDisease .
+
+pd:DailyLivingActivity rdf:type owl:Class .
+
+pd:Gait rdf:type owl:Class .
+
+# Properties
+pd:hasSeverity rdf:type owl:ObjectProperty ;
+               rdfs:domain pd:ParkinsonsDisease ;
+               rdfs:range pd:DiseaseSeverity .
+
+pd:monitors rdf:type owl:ObjectProperty ;
+            rdfs:domain pd:WearableSensor ;
+            rdfs:range pd:Patient .
+
+pd:producesData rdf:type owl:ObjectProperty ;
+                rdfs:domain pd:WearableSensor ;
+                rdfs:range pd:MovementData .
+
+pd:hasActivity rdf:type owl:ObjectProperty ;
+               rdfs:domain pd:Patient ;
+               rdfs:range pd:DailyLivingActivity .
+
+pd:hasGaitType rdf:type owl:ObjectProperty ;
+               rdfs:domain pd:Patient ;
+               rdfs:range pd:Gait .
+
+# Individuals
+pd:mildSeverity rdf:type pd:DiseaseSeverity .
+pd:moderateSeverity rdf:type pd:DiseaseSeverity .
+pd:severeSeverity rdf:type pd:DiseaseSeverity .
+
+# Example
+pd:JohnDoe rdf:type pd:Patient ;
+           pd:hasSeverity pd:mildSeverity ;
+           pd:hasActivity pd:Walking ;
+           pd:hasGaitType pd:UnsteadyGait .
+
