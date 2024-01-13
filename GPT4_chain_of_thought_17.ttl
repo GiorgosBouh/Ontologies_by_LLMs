@@ -1,0 +1,41 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pd: <http://example.org/parkinsons#> .
+
+# Classes
+pd:Patient rdf:type owl:Class .
+pd:Sensor rdf:type owl:Class .
+pd:MovementData rdf:type owl:Class .
+pd:DiseaseSeverity rdf:type owl:Class .
+pd:ActivityOfDailyLiving rdf:type owl:Class .
+pd:Gait rdf:type owl:Class .
+
+# Properties
+pd:hasSensor rdf:type owl:ObjectProperty ;
+             rdfs:domain pd:Patient ;
+             rdfs:range pd:Sensor .
+
+pd:collectsData rdf:type owl:ObjectProperty ;
+                rdfs:domain pd:Sensor ;
+                rdfs:range pd:MovementData .
+
+pd:indicatesSeverity rdf:type owl:ObjectProperty ;
+                     rdfs:domain pd:MovementData ;
+                     rdfs:range pd:DiseaseSeverity .
+
+pd:impactsActivity rdf:type owl:ObjectProperty ;
+                   rdfs:domain pd:DiseaseSeverity ;
+                   rdfs:range pd:ActivityOfDailyLiving .
+
+pd:affectsGait rdf:type owl:ObjectProperty ;
+               rdfs:domain pd:DiseaseSeverity ;
+               rdfs:range pd:Gait .
+
+# Individuals
+pd:Accelerometer rdf:type pd:Sensor .
+pd:TremorSeverity rdf:type pd:DiseaseSeverity .
+pd:Walking rdf:type pd:ActivityOfDailyLiving .
+pd:UnsteadyGait rdf:type pd:Gait .
