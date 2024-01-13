@@ -1,0 +1,73 @@
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the ontology namespace
+@prefix parkinson-monitoring: <https://example.com/parkinson-monitoring#> .
+
+# Parkinson disease class and its subclasses
+parkinson-monitoring:ParkinsonDisease rdf:type owl:Class;
+                                rdfs:label "Parkinson's Disease";
+                                rdfs:subClassOf owl:Thing .
+
+parkinson-monitoring:EarlyOnsetParkinsonDisease rdf:type owl:Class;
+                                                rdfs:subClassOf parkinson-monitoring:ParkinsonDisease;
+                                                rdfs:label "Early Onset Parkinson's Disease";
+                                                rdfs:comment "Parkinson's disease that occurs before the age of 50" .
+
+parkinson-monitoring:LateOnsetParkinsonDisease rdf:type owl:Class;
+                                               rdfs:subClassOf parkinson-monitoring:ParkinsonDisease;
+                                               rdfs:label "Late Onset Parkinson's Disease";
+                                               rdfs:comment "Parkinson's disease that occurs after the age of 50" .
+
+# Disease severity class and subclasses
+parkinson-monitoring:DiseaseSeverity rdf:type owl:Class;
+                                     rdfs:label "Disease Severity";
+                                     rdfs:subClassOf owl:Thing .
+
+parkinson-monitoring:MildParkinsonDisease rdf:type owl:Class;
+                                         rdfs:subClassOf parkinson-monitoring:DiseaseSeverity;
+                                         rdfs:label "Mild Parkinson's Disease";
+                                         rdfs:comment "Minimal motor symptoms and tremor" .
+
+parkinson-monitoring:ModerateParkinsonDisease rdf:type owl:Class;
+                                              rdfs:subClassOf parkinson-monitoring:DiseaseSeverity;
+                                              rdfs:label "Moderate Parkinson's Disease";
+                                              rdfs:comment "Moderate motor symptoms and tremor, affecting daily activities" .
+
+parkinson-monitoring:AdvancedParkinsonDisease rdf:type owl:Class;
+                                               rdfs:subClassOf parkinson-monitoring:DiseaseSeverity;
+                                               rdfs:label "Advanced Parkinson's Disease";
+                                               rdfs:comment "Severe motor symptoms and tremor, limiting mobility and independence" .
+
+# Activities of daily living (ADL) class and its subclasses
+parkinson-monitoring:ActivitiesOfDailyLiving rdf:type owl:Class;
+                                            rdfs:label "Activities of Daily Living";
+                                            rdfs:subClassOf owl:Thing .
+
+parkinson-monitoring:Grooming rdf:type owl:Class;
+                                rdfs:subClassOf parkinson-monitoring:ActivitiesOfDailyLiving;
+                                rdfs:label "Grooming";
+                                rdfs:comment "Performing personal hygiene tasks, such as washing, dressing, and brushing teeth" .
+
+parkinson-monitoring:Eating rdf:type owl:Class;
+                              rdfs:subClassOf parkinson-monitoring:ActivitiesOfDailyLiving;
+                              rdfs:label "Eating";
+                              rdfs:comment "Handling food, preparing meals, and eating independently" .
+
+parkinson-monitoring:Drinking rdf:type owl:Class;
+                              rdfs:subClassOf parkinson-monitoring:ActivitiesOfDailyLiving;
+                              rdfs:label "Drinking";
+                              rdfs:comment "Handling beverages, taking sips, and maintaining adequate hydration" .
+
+parkinson-monitoring:Toileting rdf:type owl:Class;
+                               rdfs:subClassOf parkinson-monitoring:ActivitiesOfDailyLiving;
+                               rdfs:label "Toileting";
+                               rdfs:comment "Using the toilet independently, including hygiene and bowel/bladder control" .
+
+parkinson-monitoring:Mobility rdf:type owl:Class;
+                               rdfs:subClassOf parkinson-monitoring:ActivitiesOfDailyLiving;
+                               rdfs:label "Mobility";
+                               rdfs:comment "Moving around the environment, including standing, walking, and climbing stairs" .

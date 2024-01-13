@@ -1,0 +1,78 @@
+
+@prefix : <http://www.semanticweb.org/ontologies/2024/01/parkinson-ontology#> .
+
+:ParkinsonDisease rdf:type owl:Class ;
+                  rdfs:label "Parkinson's Disease" ;
+                  rdfs:subClassOf :NeurodegenerativeDisease .
+
+:NeurodegenerativeDisease rdf:type owl:Class ;
+                         rdfs:label "Neurodegenerative Disease" .
+
+:Symptom rdf:type owl:Class ;
+         rdfs:label "Symptom" .
+
+:Tremor rdf:type :Symptom ;
+        rdfs:label "Tremor" .
+
+:Bradykinesia rdf:type :Symptom ;
+               rdfs:label "Bradykinesia" .
+
+:Rigidity rdf:type :Symptom ;
+          rdfs:label "Rigidity" .
+
+:PosturalInstability rdf:type :Symptom ;
+                    rdfs:label "Postural Instability" .
+
+:ActivitiesOfDailyLiving rdf:type owl:Class ;
+                         rdfs:label "Activities of Daily Living" .
+
+:Gait rdf:type :ActivitiesOfDailyLiving ;
+       rdfs:label "Gait" .
+
+:MovementPattern rdf:type owl:Class ;
+                  rdfs:label "Movement Pattern" .
+
+:MovementFeature rdf:type owl:Class ;
+                  rdfs:label "Movement Feature" .
+
+:TremorAmplitude rdf:type :MovementFeature ;
+                  rdfs:label "Tremor Amplitude" .
+
+:GaitSpeed rdf:type :MovementFeature ;
+            rdfs:label "Gait Speed" .
+
+:PosturalStability rdf:type :MovementFeature ;
+                    rdfs:label "Postural Stability" .
+
+:DiseaseSeverity rdf:type owl:Class ;
+                  rdfs:label "Disease Severity" .
+
+:MildParkinsonDisease rdf:type :DiseaseSeverity ;
+                    rdfs:label "Mild Parkinson Disease" .
+
+:ModerateParkinsonDisease rdf:type :DiseaseSeverity ;
+                       rdfs:label "Moderate Parkinson Disease" .
+
+:SevereParkinsonDisease rdf:type :DiseaseSeverity ;
+                     rdfs:label "Severe Parkinson Disease" .
+
+:SensorData rdf:type owl:Class ;
+            rdfs:label "Sensor Data" .
+
+:WearableDevice rdf:type owl:Class ;
+                rdfs:label "Wearable Device" .
+
+:Collects rdf:type owl:ObjectProperty ;
+           rdfs:label "Collects" .
+
+:Measures rdf:type owl:ObjectProperty ;
+           rdfs:label "Measures" .
+
+:Characterizes rdf:type owl:ObjectProperty ;
+               rdfs:label "Characterizes" .
+
+:Triggers rdf:type owl:ObjectProperty ;
+          rdfs:label "Triggers" .
+
+:Incorporates rdf:type owl:ObjectProperty ;
+              rdfs:label "Incorporates" .
