@@ -1,0 +1,37 @@
+@prefix ParkinsonsDisease Ontology: <http://example.org/ParkinsonsDiseaseOntology#> .
+@prefix NDO: <http://purl.obolibrary.org/obo/NDO_> .
+@prefix OGGI: <http://purl.obolibrary.org/obo/OGGI_> .
+Class: ParkinsonsDisease
+- has_severity: NDO:DiseaseSeverity
+- has_movement_pattern: NDO:MovementPattern
+- has_activity_of_daily_living: NDO:ActivityOfDailyLiving
+- has_gait: NDO:GaitPattern
+Instance: ParkinsonsDisease-1
+- has_severity: NDO:Severe
+- has_movement_pattern: NDO:Tremors
+- has_activity_of_daily_living: NDO:Dressing
+- has_gait: NDO:Shuffling
+Instance: ParkinsonsDisease-2
+- has_severity: NDO:Moderate
+- has_movement_pattern: NDO:Rigidity
+- has_activity_of_daily_living: NDO:Walking
+- has_gait: NDO:Freezing
+Class: SensorData
+- has_sensor_type: OGGI:SensorType
+- has_data_value: OGGI:DataValue
+- has_timestamp: OGGI:Timestamp
+Instance: SensorData-1
+- has_sensor_type: OGGI:Accelerometer
+- has_data_value: "10.234 g"^^OGGI:DataValue
+- has_timestamp: "2023-02-20 14:30:00"^^OGGI:Timestamp
+Instance: SensorData-2
+- has_sensor_type: OGGI:Gyroscope
+- has_data_value: "3.14159 rad/s"^^OGGI:DataValue
+- has_timestamp: "2023-02-20 14:31:00"^^OGGI:Timestamp
+ObjectProperty: has_sensor_data
+- domain: ParkinsonsDisease
+- range: SensorData
+ParkinsonsDisease-1 has_sensor_data SensorData-1 .
+ParkinsonsDisease-1 has_sensor_data SensorData-2 .
+ParkinsonsDisease-2 has_sensor_data SensorData-3 .
+ParkinsonsDisease-2 has_sensor_data SensorData-4 .
