@@ -1,0 +1,76 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pd: <http://example.org/parkinsons#> .
+@prefix nd: <http://example.org/neurodegenerative#> .
+
+# Define the Parkinson's Disease Ontology
+pd:ParkinsonsDiseaseOntology rdf:type owl:Ontology ;
+    owl:imports nd:NeurodegenerativeDiseaseOntology .
+
+# Define Classes
+pd:ParkinsonsDisease rdf:type owl:Class ;
+    rdfs:label "Parkinson's Disease" .
+
+pd:DiseaseSeverity rdf:type owl:Class ;
+    rdfs:label "Disease Severity" .
+
+pd:MovementPattern rdf:type owl:Class ;
+    rdfs:label "Movement Pattern" .
+
+pd:ADL rdf:type owl:Class ;
+    rdfs:label "Activities of Daily Living" .
+
+pd:Gait rdf:type owl:Class ;
+    rdfs:label "Gait" .
+
+# Define Properties
+pd:hasSeverity rdf:type owl:ObjectProperty ;
+    rdfs:domain pd:ParkinsonsDisease ;
+    rdfs:range pd:DiseaseSeverity ;
+    rdfs:label "has severity" .
+
+pd:hasMovementPattern rdf:type owl:ObjectProperty ;
+    rdfs:domain pd:ParkinsonsDisease ;
+    rdfs:range pd:MovementPattern ;
+    rdfs:label "has movement pattern" .
+
+pd:hasADL rdf:type owl:ObjectProperty ;
+    rdfs:domain pd:ParkinsonsDisease ;
+    rdfs:range pd:ADL ;
+    rdfs:label "has activities of daily living" .
+
+pd:hasGait rdf:type owl:ObjectProperty ;
+    rdfs:domain pd:ParkinsonsDisease ;
+    rdfs:range pd:Gait ;
+    rdfs:label "has gait" .
+
+# Individuals
+pd:Patient001 rdf:type pd:ParkinsonsDisease ;
+    pd:hasSeverity pd:ModerateSeverity ;
+    pd:hasMovementPattern pd:Pattern001 ;
+    pd:hasADL pd:ADL001 ;
+    pd:hasGait pd:Gait001 ;
+    rdfs:label "Patient 001" .
+
+# Disease Severity Individuals
+pd:MildSeverity rdf:type pd:DiseaseSeverity ;
+    rdfs:label "Mild" .
+
+pd:ModerateSeverity rdf:type pd:DiseaseSeverity ;
+    rdfs:label "Moderate" .
+
+pd:SevereSeverity rdf:type pd:DiseaseSeverity ;
+    rdfs:label "Severe" .
+
+# Movement Pattern Individuals
+pd:Pattern001 rdf:type pd:MovementPattern ;
+    rdfs:label "Pattern 001" .
+
+# Activities of Daily Living Individuals
+pd:ADL001 rdf:type pd:ADL ;
+    rdfs:label "ADL 001" .
+
+# Gait Individuals
+pd:Gait001 rdf:type pd:Gait ;
+    rdfs:label "Gait 001" .
