@@ -1,0 +1,28 @@
+@prefix NDO: <http://purl.obolibrary.org/obo/NDO_> .
+@prefix MDO: <http://purl.obolibrary.org/obo/MDO_> .
+@prefix GAIT: <http://purl.obolibrary.org/obo/GAIT_> .
+@prefix PDO: <http://example.org/PDO#> .
+CLASS PDO:ParkinsonsDisease
+SUBCLASS OF NDO:NeurodegenerativeDisease
+PROPERTY PDO:diseaseSeverity
+SUBPROPERTY OF NDO:diseaseSeverity
+CLASS PDO:MovementPattern
+SUBCLASS OF MDO:MovementPattern
+PROPERTY PDO:movementPattern
+SUBPROPERTY PDO:movementPattern
+SUBPROPERTY OF MDO:movementPattern
+CLASS PDO:Gait
+SUBCLASS OF GAIT:Gait
+PROPERTY PDO:gait
+SUBPROPERTY OF GAIT:gait
+PDO:ParkinsonsDisease -> NDO:NeurodegenerativeDisease
+PDO:MovementPattern -> MDO:MovementPattern
+PDO:Gait -> GAIT:Gait
+INSTANCE PDO:Patient1
+INSTANCE PDO:Patient2
+PDO:Patient1 -> PDO:ParkinsonsDisease
+PDO:Patient2 -> PDO:ParkinsonsDisease
+PDO:Patient1 -> PDO:MovementPattern
+PDO:Patient2 -> PDO:MovementPattern
+PDO:Patient1 -> PDO:Gait
+PDO:Patient2 -> PDO:Gait
