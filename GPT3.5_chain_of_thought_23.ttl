@@ -1,0 +1,94 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ont: <http://example.org/parkinsons#> .
+@prefix snomed: <http://snomed.info/sct#> .
+
+# Define the ontology
+ont:ParkinsonsOntology
+    rdf:type owl:Ontology ;
+    rdfs:label "Parkinson's Disease Ontology" ;
+    rdfs:comment "An ontology for Parkinson's disease monitoring and assessment" .
+
+# Define classes for Parkinson's Disease aspects
+ont:ParkinsonsSeverity
+    rdf:type owl:Class ;
+    rdfs:label "Parkinson's Disease Severity" ;
+    rdfs:comment "Class representing the severity of Parkinson's disease" .
+
+ont:DailyLivingActivity
+    rdf:type owl:Class ;
+    rdfs:label "Daily Living Activity" ;
+    rdfs:comment "Class representing activities of daily living affected by Parkinson's disease" .
+
+ont:GaitPattern
+    rdf:type owl:Class ;
+    rdfs:label "Gait Pattern" ;
+    rdfs:comment "Class representing different gait patterns associated with Parkinson's disease" .
+
+# Define individuals for Parkinson's Disease severity
+ont:MildParkinsons
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:ParkinsonsSeverity ;
+    rdfs:label "Mild Parkinson's Disease" ;
+    rdfs:comment "A stage of Parkinson's disease characterized by mild symptoms" .
+
+ont:ModerateParkinsons
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:ParkinsonsSeverity ;
+    rdfs:label "Moderate Parkinson's Disease" ;
+    rdfs:comment "A stage of Parkinson's disease characterized by moderate symptoms" .
+
+ont:SevereParkinsons
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:ParkinsonsSeverity ;
+    rdfs:label "Severe Parkinson's Disease" ;
+    rdfs:comment "A stage of Parkinson's disease characterized by severe symptoms" .
+
+# Define individuals for activities of daily living
+ont:Dressing
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:DailyLivingActivity ;
+    rdfs:label "Dressing" ;
+    rdfs:comment "An activity of daily living related to dressing oneself" .
+
+ont:Eating
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:DailyLivingActivity ;
+    rdfs:label "Eating" ;
+    rdfs:comment "An activity of daily living related to eating" .
+
+ont:Bathing
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:DailyLivingActivity ;
+    rdfs:label "Bathing" ;
+    rdfs:comment "An activity of daily living related to bathing" .
+
+# Define individuals for gait patterns
+ont:ShufflingGait
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:GaitPattern ;
+    rdfs:label "Shuffling Gait" ;
+    rdfs:comment "A gait pattern commonly associated with Parkinson's disease, characterized by small steps" .
+
+ont:FreezingGait
+    rdf:type owl:NamedIndividual ;
+    rdf:type ont:GaitPattern ;
+    rdfs:label "Freezing Gait" ;
+    rdfs:comment "A gait pattern commonly associated with Parkinson's disease, characterized by sudden stops in walking" .
+
+# Link to SNOMED CT for additional terms
+ont:MildParkinsons
+    owl:sameAs snomed:12345678 .
+
+ont:ModerateParkinsons
+    owl:sameAs snomed:23456789 .
+
+ont:SevereParkinsons
+    owl:sameAs snomed:34567890 .
+
+ont:ShufflingGait
+    owl:sameAs snomed:45678901 .
+
+ont:FreezingGait
+    owl:sameAs snomed:56789012 .
