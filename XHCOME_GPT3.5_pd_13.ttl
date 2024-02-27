@@ -1,0 +1,115 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the ontology
+@prefix pd-ontology: <http://example.com/pd-ontology#> .
+@base <http://example.com/pd-ontology> .
+
+# Classes
+pd-ontology:Patient rdf:type owl:Class .
+pd-ontology:PHR rdf:type owl:Class .
+pd-ontology:SensorData rdf:type owl:Class .
+pd-ontology:Activity rdf:type owl:Class .
+pd-ontology:PerformanceLevel rdf:type owl:Class .
+pd-ontology:ObservationInstance rdf:type owl:Class .
+pd-ontology:SeverityLevel rdf:type owl:Class .
+pd-ontology:HoehnYahrLevel rdf:type owl:Class .
+pd-ontology:TremorAttribute rdf:type owl:Class .
+pd-ontology:BradykinesiaAttribute rdf:type owl:Class .
+pd-ontology:Notification rdf:type owl:Class .
+pd-ontology:Medication rdf:type owl:Class .
+pd-ontology:DosagePlan rdf:type owl:Class .
+pd-ontology:Diagnosis rdf:type owl:Class .
+pd-ontology:Physician rdf:type owl:Class .
+pd-ontology:Caregiver rdf:type owl:Class .
+pd-ontology:FallEvent rdf:type owl:Class .
+pd-ontology:MedicationPlan rdf:type owl:Class .
+pd-ontology:Symptom rdf:type owl:Class .
+pd-ontology:MobilityDevice rdf:type owl:Class .
+pd-ontology:Exercise rdf:type owl:Class .
+pd-ontology:ResearchStudy rdf:type owl:Class .
+pd-ontology:SupportGroup rdf:type owl:Class .
+pd-ontology:HealthcareProvider rdf:type owl:Class .
+pd-ontology:Therapy rdf:type owl:Class .
+
+# Object Properties
+pd-ontology:performsActivity rdf:type owl:ObjectProperty .
+pd-ontology:hasPerformanceLevel rdf:type owl:ObjectProperty .
+pd-ontology:exhibitsSymptoms rdf:type owl:ObjectProperty .
+pd-ontology:hasSeverityLevel rdf:type owl:ObjectProperty .
+pd-ontology:hasHoehnYahrStaging rdf:type owl:ObjectProperty .
+pd-ontology:hasTreatmentPlan rdf:type owl:ObjectProperty .
+pd-ontology:hasMedicationDosage rdf:type owl:ObjectProperty .
+pd-ontology:hasAttribute rdf:type owl:ObjectProperty .
+pd-ontology:affectsBodyPart rdf:type owl:ObjectProperty .
+pd-ontology:withinTimestampRange rdf:type owl:ObjectProperty .
+pd-ontology:hasDiagnosis rdf:type owl:ObjectProperty .
+pd-ontology:hasPhysician rdf:type owl:ObjectProperty .
+pd-ontology:hasMedication rdf:type owl:ObjectProperty .
+pd-ontology:hasDosagePlan rdf:type owl:ObjectProperty .
+
+# Data Properties
+pd-ontology:patientID rdf:type owl:DatatypeProperty .
+pd-ontology:patientName rdf:type owl:DatatypeProperty .
+pd-ontology:birthDate rdf:type owl:DatatypeProperty .
+pd-ontology:address rdf:type owl:DatatypeProperty .
+pd-ontology:contactInformation rdf:type owl:DatatypeProperty .
+pd-ontology:medicalHistory rdf:type owl:DatatypeProperty .
+pd-ontology:medicationHistory rdf:type owl:DatatypeProperty .
+pd-ontology:timestamp rdf:type owl:DatatypeProperty .
+pd-ontology:location rdf:type owl:DatatypeProperty .
+pd-ontology:dataValue rdf:type owl:DatatypeProperty .
+pd-ontology:alertType rdf:type owl:DatatypeProperty .
+pd-ontology:alertMessage rdf:type owl:DatatypeProperty .
+pd-ontology:diagnosisType rdf:type owl:DatatypeProperty .
+pd-ontology:physicianName rdf:type owl:DatatypeProperty .
+pd-ontology:dosageAmount rdf:type owl:DatatypeProperty .
+pd-ontology:dosageTime rdf:type owl:DatatypeProperty .
+pd-ontology:frequency rdf:type owl:DatatypeProperty .
+pd-ontology:startDate rdf:type owl:DatatypeProperty .
+pd-ontology:endDate rdf:type owl:DatatypeProperty .
+pd-ontology:medicationName rdf:type owl:DatatypeProperty .
+
+# Individual Patients
+pd-ontology:Patient1 rdf:type pd-ontology:Patient ;
+    pd-ontology:patientID "P1" ;
+    pd-ontology:patientName "John Doe" ;
+    pd-ontology:birthDate "1970-01-01" ;
+    pd-ontology:address "123 Main St" ;
+    pd-ontology:contactInformation "john.doe@example.com" ;
+    pd-ontology:medicalHistory "History for Patient 1" ;
+    pd-ontology:medicationHistory "Medication History for Patient 1" ;
+    pd-ontology:hasDiagnosis pd-ontology:Diagnosis1 ;
+    pd-ontology:hasPhysician pd-ontology:Physician1 .
+
+# Individual Physicians
+pd-ontology:Physician1 rdf:type pd-ontology:Physician ;
+    pd-ontology:physicianName "Dr. Smith" .
+
+# Individual Diagnosis
+pd-ontology:Diagnosis1 rdf:type pd-ontology:Diagnosis ;
+    pd-ontology:diagnosisType "Early PD" .
+
+# Individual PHRs
+pd-ontology:PHR1 rdf:type pd-ontology:PHR ;
+    pd-ontology:medicalHistory "PHR for Patient 1" ;
+    pd-ontology:medicationHistory "Medication History for PHR 1" .
+
+# Individual Medications
+pd-ontology:Medication1 rdf:type pd-ontology:Medication ;
+    pd-ontology:medicationName "Levodopa" .
+
+# Individual Dosage Plans
+pd-ontology:DosagePlan1 rdf:type pd-ontology:DosagePlan ;
+    pd-ontology:hasMedication pd-ontology:Medication1 ;
+    pd-ontology:dosageAmount "250 mg" ;
+    pd-ontology:dosageTime "08:00 AM" ;
+    pd-ontology:frequency "Once daily" ;
+    pd-ontology:startDate "2024-02-01" ;
+    pd-ontology:endDate "2024-02-28" .
+
+# Define more individuals and relationships as needed...
+
+# SWRL rules can be added here...
