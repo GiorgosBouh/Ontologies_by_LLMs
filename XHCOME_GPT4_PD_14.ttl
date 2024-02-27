@@ -1,0 +1,189 @@
+
+@prefix : <http://example.org/pd_ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+
+### Ontology Header
+: a owl:Ontology .
+
+### Additional Classes
+:Dyskinesia a owl:Class .
+:SleepDisorder a owl:Class .
+:MedicationSideEffect a owl:Class .
+:CognitiveDecline a owl:Class .
+:MoodDisorder a owl:Class .
+:PhysicalTherapySession a owl:Class .
+:DietaryRecommendation a owl:Class .
+:ExerciseRegimen a owl:Class .
+:HealthcareProvider a owl:Class .
+:MedicalAppointment a owl:Class .
+:SpeechTherapySession a owl:Class .
+:GeneticRiskFactor a owl:Class .
+:EnvironmentalRiskFactor a owl:Class .
+:PatientSupportGroup a owl:Class .
+:ResearchStudy a owl:Class .
+
+### Expanded Properties
+:hasSleepDisorder a owl:ObjectProperty .
+:hasMedicationSideEffect a owl:ObjectProperty .
+:undergoesPhysicalTherapy a owl:ObjectProperty .
+:followsDietaryRecommendation a owl:ObjectProperty .
+:participatesInExerciseRegimen a owl:ObjectProperty .
+:hasHealthcareProvider a owl:ObjectProperty .
+:hasMedicalAppointment a owl:ObjectProperty .
+:undergoesSpeechTherapy a owl:ObjectProperty .
+:hasGeneticRiskFactor a owl:ObjectProperty .
+:hasEnvironmentalRiskFactor a owl:ObjectProperty .
+:isMemberOfSupportGroup a owl:ObjectProperty .
+:participatesInResearchStudy a owl:ObjectProperty .
+
+### This further expanded ontology includes a wider range of classes to cover comprehensive aspects of PD management and patient care.
+
+### Integration from Uploaded Ontology
+# New Classes from Wear4PDmoveOnto_v2
+:GaitAnalysis a owl:Class .
+:HandTremorMeasurement a owl:Class .
+:MedicationReminder a owl:Class .
+:PatientFeedback a owl:Class .
+:SensorAccuracy a owl:Class .
+
+# New Properties
+:hasGaitAnalysis a owl:ObjectProperty ;
+                 rdfs:domain :PD_Patient ;
+                 rdfs:range :GaitAnalysis .
+:measuresHandTremor a owl:ObjectProperty ;
+                    rdfs:domain :SmartWatch ;
+                    rdfs:range :HandTremorMeasurement .
+:sendsMedicationReminder a owl:ObjectProperty ;
+                         rdfs:domain :MedicalPrescription ;
+                         rdfs:range :MedicationReminder .
+:collectsPatientFeedback a owl:ObjectProperty ;
+                         rdfs:domain :HealthcareProvider ;
+                         rdfs:range :PatientFeedback .
+:assessesSensorAccuracy a owl:ObjectProperty ;
+                        rdfs:domain :WearableSensorData ;
+                        rdfs:range :SensorAccuracy .
+
+### Enrichment from DAHCC, SOSA, SAREF, PMDO
+# Hypothetical integration based on user guidance
+
+### New Classes from SOSA, SAREF, DAHCC, PMDO
+:PD_Sensor a owl:Class ; # From SOSA
+            rdfs:subClassOf :Sensor .
+:PD_SmartDevice a owl:Class ; # From SAREF
+                 rdfs:subClassOf :SmartDevice .
+:PD_HolisticCarePlan a owl:Class . # From DAHCC
+:PD_GeneticMarker a owl:Class . # From PMDO
+
+### New Object Properties
+:makesObservation a owl:ObjectProperty ;
+                  rdfs:domain :PD_Sensor ;
+                  rdfs:range :Observation .
+:supportsPatient a owl:ObjectProperty ;
+                 rdfs:domain :PD_SmartDevice ;
+                 rdfs:range :PD_Patient .
+:hasCarePlan a owl:ObjectProperty ;
+             rdfs:domain :PD_Patient ;
+             rdfs:range :PD_HolisticCarePlan .
+:indicatesRiskFor a owl:ObjectProperty ;
+                  rdfs:domain :PD_GeneticMarker ;
+                  rdfs:range :PD_Patient .
+
+### Integration of new concepts with existing ontology structure
+
+### Synthetic Data for PD Patients and Their Symptoms
+
+
+:Patient1 a :PD_Patient ;
+    :hasObservation :Tremor1 , :Bradykinesia1 .
+
+:Tremor1 a :Tremor ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Bradykinesia1 a :Bradykinesia ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Patient2 a :PD_Patient ;
+    :hasObservation :Tremor2 , :Bradykinesia2 .
+
+:Tremor2 a :Tremor ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Bradykinesia2 a :Bradykinesia ;
+    :hasSeverity "Severe"^^xsd:string .
+
+:Patient3 a :PD_Patient ;
+    :hasObservation :Tremor3 , :Bradykinesia3 .
+
+:Tremor3 a :Tremor ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Bradykinesia3 a :Bradykinesia ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Patient4 a :PD_Patient ;
+    :hasObservation :Tremor4 , :Bradykinesia4 .
+
+:Tremor4 a :Tremor ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Bradykinesia4 a :Bradykinesia ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Patient5 a :PD_Patient ;
+    :hasObservation :Tremor5 , :Bradykinesia5 .
+
+:Tremor5 a :Tremor ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Bradykinesia5 a :Bradykinesia ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Patient6 a :PD_Patient ;
+    :hasObservation :Tremor6 , :Bradykinesia6 .
+
+:Tremor6 a :Tremor ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Bradykinesia6 a :Bradykinesia ;
+    :hasSeverity "Severe"^^xsd:string .
+
+:Patient7 a :PD_Patient ;
+    :hasObservation :Tremor7 , :Bradykinesia7 .
+
+:Tremor7 a :Tremor ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Bradykinesia7 a :Bradykinesia ;
+    :hasSeverity "Severe"^^xsd:string .
+
+:Patient8 a :PD_Patient ;
+    :hasObservation :Tremor8 , :Bradykinesia8 .
+
+:Tremor8 a :Tremor ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Bradykinesia8 a :Bradykinesia ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Patient9 a :PD_Patient ;
+    :hasObservation :Tremor9 , :Bradykinesia9 .
+
+:Tremor9 a :Tremor ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Bradykinesia9 a :Bradykinesia ;
+    :hasSeverity "Mild"^^xsd:string .
+
+:Patient10 a :PD_Patient ;
+    :hasObservation :Tremor10 , :Bradykinesia10 .
+
+:Tremor10 a :Tremor ;
+    :hasSeverity "Moderate"^^xsd:string .
+
+:Bradykinesia10 a :Bradykinesia ;
+    :hasSeverity "Mild"^^xsd:string .
