@@ -1,0 +1,269 @@
+@prefix : :Patient
+a owl:Class;
+owl:equivalentClass "Patient";
+owl:hasKey (patient-id);
+owl:hasKey (name);
+owl:hasKey (age);
+owl:hasKey (gender);
+owl:hasKey (disease-stage);
+owl:hasKey (medication-plan);
+owl:hasKey (symptoms);
+owl:hasKey (last-medication-time);
+owl:hasKey (next-medication-time);
+owl:hasKey (medication-reminder-enabled);
+owl:hasKey (fall-detection-enabled);
+owl:hasKey (tremor-detection-enabled);
+owl:hasKey (bradykinesia-detection-enabled);
+:Sensor
+a owl:Class;
+owl:equivalentClass "Sensor";
+owl:hasKey (sensor-id);
+owl:hasKey (patient-id);
+owl:hasKey (data-collection-start-date);
+owl:hasKey (data-collection-end-date);
+owl:hasKey (data-type);
+owl:hasKey (data-resolution);
+owl:hasKey (battery-level);
+owl:hasKey (last-sync-time);
+:Observation
+a owl:Class;
+owl:equivalentClass "Observation";
+owl:hasKey (observation-id);
+owl:hasKey (patient-id);
+owl:hasKey (observation-type);
+owl:hasKey (severity-level);
+owl:hasKey (timestamp);
+owl:hasKey (data-source);
+owl:hasKey (manual-input-text);
+:PHR
+a owl:Class;
+owl:equivalentClass "PHR";
+owl:hasKey (phr-id);
+owl:hasKey (patient-id);
+owl:hasKey (medical-history);
+owl:hasKey (diagnosis);
+owl:hasKey (medication);
+owl:hasKey (other-relevant-information);
+owl:hasKey (last-reviewed-date);
+owl:hasKey (next-review-date);
+:Hoehn and Yahr Staging
+a owl:Class;
+owl:equivalentClass "Hoehn and Yahr Staging";
+owl:hasKey (staging-id);
+owl:hasKey (observation-id);
+owl:hasKey (staging-level);
+owl:hasKey (timestamp);
+owl:hasKey (staging-type);
+:Notification
+a owl:Class;
+owl:equivalentClass "Notification";
+owl:hasKey (notification-id);
+owl:hasKey (patient-id);
+owl:hasKey (notification-type);
+owl:hasKey (recipient);
+owl:hasKey (timestamp);
+owl:hasKey (notification-message);
+:Alert
+a owl:Class;
+owl:equivalentClass "Alert";
+owl:hasKey (alert-id);
+owl:hasKey (patient-id);
+owl:hasKey (alert-type);
+owl:hasKey (alert-timestamp);
+owl:hasKey (alert-message);
+:Medication Reminder
+a owl:Class;
+owl:equivalentClass "Medication Reminder";
+owl:hasKey (medication-reminder-id);
+owl:hasKey (patient-id);
+owl:hasKey (medication-name);
+owl:hasKey (dosage);
+owl:hasKey (frequency);
+owl:hasKey (start-time);
+owl:hasKey (end-time);
+owl:hasKey (reminder-time);
+:Fall Detection
+a owl:Class;
+owl:equivalentClass "Fall Detection";
+owl:has Key (fall-detection-id);
+owl:hasKey (patient-id);
+owl:hasKey (fall-timestamp);
+owl:hasKey (fall-severity);
+owl:hasKey (fall-location);
+:Tremor Detection
+a owl:Class;
+owl:equivalentClass "Tremor Detection";
+owl:hasKey (tremor-detection-id);
+owl:hasKey (patient-id);
+owl:hasKey (tremor-timestamp);
+owl:hasKey (tremor-severity);
+owl:hasKey (tremor-location);
+:Bradykinesia Detection
+a owl:Class;
+owl:equivalentClass "Bradykinesia Detection";
+owl:hasKey (bradykinesia-detection-id);
+owl:has key (patient-id);
+owl:hasKey (bradykinesia-timestamp);
+owl:hasKey (bradykinesia-severity);
+owl:hasKey (bradykinesia-location);
+:SWRL
+a owl:Class;
+owl:equivalentClass "SWRL";
+owl:hasKey (swrl-id);
+owl:hasKey (patient-id);
+owl:hasKey (rule-name);
+owl:hasKey (rule-description);
+owl:hasKey (rule-logic);
+owl:hasKey (rule-consequences);
+:Medication
+a owl:Class;
+owl:equivalentClass "Medication";
+owl:hasKey (medication-id);
+owl:hasKey (name);
+owl:hasKey (dosage);
+owl:hasKey (frequency);
+owl:hasKey (start-time);
+owl:hasKey (end-time);
+:Therapy
+a owl:Class;
+owl:equivalentClass "Therapy";
+owl:hasKey (therapy-id);
+owl:hasKey (name);
+owl:hasKey (frequency);
+owl:hasKey (duration);
+:Surgery
+a owl:Class;
+owl:equivalentClass "Surgery";
+owl:hasKey (surgery-id);
+owl:hasKey (name);
+owl:hasKey (date);
+owl:hasKey (outcome);
+:Symptom
+a owl:Class;
+owl:equivalentClass "Symptom";
+owl:hasKey (symptom-id);
+owl:hasKey (name);
+owl:hasKey (severity);
+owl:hasKey (duration);
+:Disease Progression
+a owl:Class;
+owl:equivalentClass "Disease Progression";
+owl:hasKey (disease-progression-id);
+owl:hasKey (patient-id);
+owl:hasKey (stage);
+owl:hasKey (progression-rate);
+owl:hasKey (duration);
+:Patient History
+a owl:Class;
+owl:equivalentClass "Patient History";
+owl:hasKey (patient-history-id);
+owl:hasKey (patient-id);
+owl:hasKey (medical-history);
+owl:hasKey (duration);
+:Family History
+a owl:Class;
+owl:equivalentClass "Family History";
+owl:hasKey (family-history-id);
+owl:hasKey (patient-id);
+owl:hasKey (family-member-name);
+owl:hasKey (relationship-to-patient);
+owl:hasKey (medical-history);
+:Genetic Testing
+a owl:Class;
+owl:equivalentClass "Genetic Testing";
+owl:hasKey (genetic-testing-id);
+owl:hasKey (patient-id);
+owl:hasKey (genetic-test-results);
+owl:hasKey (interpretation);
+:Imaging Results
+a owl:Class;
+owl:equivalentClass "Imaging Results";
+owl:hasKey (imaging-results-id);
+owl:hasKey (patient-id);
+owl:hasKey (imaging-test-results);
+owl:hasKey (interpretation);
+:Clinical Trial
+a owl:Class;
+owl:equivalentClass "Clinical Trial";
+owl:hasKey (clinical-trial-id);
+owl:hasKey (patient-id);
+owl:hasKey (trial-name);
+owl:hasKey (start-date);
+owl:hasKey (end-date);
+owl:hasKey (outcome);
+:Patient Registry
+a owl:Class;
+owl:equivalentClass "Patient Registry";
+owl:hasKey (patient-registry-id);
+owl:hasKey (patient-id);
+owl:hasKey (diagnosis-date);
+owl:hasKey (treatment-plan);
+owl:hasKey (last-review-date);
+owl:hasKey (next-review-date);
+:Clinical Practice Guideline
+a owl:Class;
+owl:equivalentClass "Clinical Practice Guideline";
+owl:hasKey (guideline-id);
+owl:hasKey (name);
+owl:hasKey (publication-date);
+owl:hasKey (recommendations);
+:Patient Education
+a owl:Class;
+owl:equivalentClass "Patient Education";
+owl:hasKey (education-id);
+owl:hasKey (patient-id);
+owl:hasKey (education-material-name);
+owl:hasKey (type);
+owl:hasKey (topic);
+:Support Group
+a owl:Class;
+owl:equivalentClass "Support Group";
+owl:hasKey (support-group-id);
+owl:hasKey (patient-id);
+owl:hasKey (name);
+owl:hasKey (location);
+owl:hasKey (meeting-frequency);
+:Clinical Research
+a owl:Class;
+owl:equivalentClass "Clinical Research";
+owl:hasKey (research-id);
+owl:hasKey (patient-id);
+owl:hasKey (study-name);
+owl:hasKey (duration);
+owl:hasKey (outcome);
+:Patient Advocacy
+a owl:Class;
+owl:equivalentClass "Patient Advocacy";
+owl:hasKey (advocacy-id);
+owl:hasKey (patient-id);
+owl:hasKey (organization-name);
+owl:hasKey (mission);
+owl:hasKey (services-provided);
+:Healthcare Provider
+a owl:Class;
+owl:equivalentClass "Healthcare Provider";
+owl:hasKey (provider-id);
+owl:hasKey (patient-id);
+owl:hasKey (name);
+owl:hasKey (specialty);
+owl:hasKey (contact-information);
+:Insurance Provider
+a owl:Class;
+owl:equivalentClass "Insurance Provider";
+owl:hasKey (insurance-provider-id);
+owl:hasKey (patient-id);
+owl:hasKey (name);
+owl:hasKey (coverage-options);
+owl:hasKey (payment-rates);
+:Patient-Reported Outcomes
+a owl:Class;
+owl:equivalentClass "Patient-Reported Outcomes";
+owl:hasKey (outcome-id);
+owl:hasKey (patient-id);
+owl:hasKey (outcome-name);
+owl:hasKey (assessment-frequency);
+owl:hasKey (outcome-measures);
+:Therapy Outcomes
+a owl:Class;
+owl:equivalentClass "Therapy Outcomes";
+owl:hasKey (outcome-id);
