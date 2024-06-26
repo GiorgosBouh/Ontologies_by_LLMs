@@ -1,0 +1,58 @@
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pd: <http://purl.bdrc.info/ontology/parkinsons#> .
+
+pd:ParkinsonDiseaseOntology a owl:Ontology .
+
+# Classes
+pd:SensorData a owl:Class .
+pd:PatientHealthRecord a owl:Class .
+pd:PDPatient a owl:Class ; owl:subClassOf pd:Patient .
+pd:AlertingNotification a owl:Class .
+pd:DailyDosagePlan a owl:Class .
+pd:Diagnosis a owl:Class .
+pd:DosageTime a owl:Class .
+pd:MedicalPrescription a owl:Class .
+pd:NotifyDoctor a owl:Class .
+pd:RecognizedEvent a owl:Class .
+    pd:SketchingActivity a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+    pd:WalkingActivity a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+pd:ActivitiesOfDailyLiving a owl:Class .
+pd:Tremor a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+pd:BradykinesiaOfUpperLimb a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+pd:PDPatientFallingEventObservation a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+pd:PDPatientMissingDoseEventObservation a owl:Class ; owl:subClassOf pd:RecognizedEvent .
+pd:SmartWatch a owl:Class ; owl:subClassOf pd:SensorData .
+pd:RigiditySymptom a owl:Class .
+pd:HoehnAndYahrStage a owl:Class .
+pd:UPDRSAssessment a owl:Class .  # Class for UPDRS Assessment
+pd:UPDRSQuestion a owl:Class .  # Class for UPDRS Question
+
+# Object Properties
+pd:hasSensorData  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:SensorData .
+pd:hasPHR  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:PatientHealthRecord .
+pd:triggers  a owl:ObjectProperty ; owl:domain pd:RecognizedEvent ; owl:range pd:AlertingNotification .
+pd:hasDailyDosagePlan  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:DailyDosagePlan .
+pd:hasDiagnosis  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:Diagnosis .
+pd:hasDosageTime  a owl:ObjectProperty ; owl:domain pd:DailyDosagePlan ; owl:range pd:DosageTime .
+pd:hasMedicalPrescription  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:MedicalPrescription .
+pd:triggersDoctorNotification  a owl:ObjectProperty ; owl:domain pd:RecognizedEvent ; owl:range pd:NotifyDoctor .
+pd:hasObservation  a owl:ObjectProperty ; owl:domain pd:SensorData ; owl:range pd:RecognizedEvent .
+pd:exhibitsSymptom  a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:RigiditySymptom .
+pd:hasHoehnAndYahrStage a owl:ObjectProperty ; owl:domain pd:Diagnosis ; owl:range pd:HoehnAndYahrStage .
+pd:hasUPDRSAssessment a owl:ObjectProperty ; owl:domain pd:PDPatient ; owl:range pd:UPDRSAssessment .  # New Property
+pd:hasUPDRSQuestion a owl:ObjectProperty ; owl:domain pd:UPDRSAssessment ; owl:range pd:UPDRSQuestion .  # New Property
+
+# Data Properties
+pd:hasPerformanceLevel a owl:DatatypeProperty ; owl:domain pd:SketchingActivity .
+
+# Additional Notes
+# The ontology captures concepts for sensor data, patient health records, activities of daily living, symptoms, diagnoses, medication plans, and alerting notifications.
+# It integrates wearable sensor data with patient health records for a comprehensive view of Parkinson's Disease (PD) management.
+# The ontology allows for future integration with anonymized data from the "MDS UPDRS Part II" questionnaire for a more detailed assessment.
+
+# Next Steps:
+# 1. Refine the UPDRS Class: We can further define properties for UPDRSAssessment to represent the date, version of the questionnaire used, etc.
+# 2. SWRL Rule Development: The next step would involve defining SWRL rules to address the Competency Questions (CQs) provided earlier. This will involve reasoning about sensor data, medical history, and potentially triggering alerts based on specific conditions.
+
+# This ontology provides a solid foundation for managing and interpreting data related to Parkinson's Disease. We can continue to develop and refine it based on specific needs and available data.
