@@ -1,9 +1,8 @@
-This repository contains ontologies files 
-# Ontologies Repository
-# Paper: Ontology Engineering for Parkinson's Disease Monitoring and Alerting using Large Language Models
+# Ontologies and files Repository
+# Paper: Ontology Engineering Methodologies for Parkinson's Disease Monitoring and Alerting using Large Language Models
 
 ## Abstract
-This project demonstrates the integration of Large Language Models (LLMs) in ontology engineering for Parkinson's Disease (PD) monitoring and alerting. The proposed X-HCOME methodology, enhanced by LLMs, provides a robust approach to developing quality ontologies, showcasing notable time efficiency and comprehensive knowledge representation.
+This project demonstrates the integration of Large Language Models (LLMs) in ontology engineering for Parkinson's Disease (PD) monitoring and alerting. The proposed collaborative ontology engineer methodologies (human and LLM), provides robusts approaches to developing quality ontologies, showcasing notable time efficiency and comprehensive knowledge representation.
 
 ## Introduction
 Ontology engineering is crucial for structuring knowledge in various domains, including healthcare. This project focuses on leveraging LLMs to improve the efficiency and accuracy of ontology development for PD monitoring and alerting.
@@ -19,6 +18,8 @@ Previous studies have explored automatic ontology extraction and alignment using
 ### Techniques Used
 - **One Shot (OS)**: Single prompt approach.
 - **Chain of Thought (CoT)**: Sequential prompting method.
+- **H-HCOME**: Collaborative enviroment (Human and LLM) for OEM
+- **Expert Review of the X-HCOME**: Collaborative enviroment (Human and LLM) for OEM
 - **SimX-HCOME+**: Simulated environment for human-supervised LLM-led ontology development.
 
 ## Experimental Setup
