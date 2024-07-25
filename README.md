@@ -12,8 +12,8 @@ Previous studies have explored automatic ontology extraction and alignment using
 
 ## Research Methodology
 ### Experiment Phases
-1. **Phase 1**: LLMs independently construct an ontology from scratch.
-2. **Phase 2-4**: Hybrid approaches where human experts and LLMs collaborate to refine the ontology.
+1. **Experiment 1**: LLMs independently construct an ontology from scratch.
+2. **PExperiments 2-4**: Hybrid approaches where human experts and LLMs collaborate to refine the ontology.
 
 ### Techniques Used
 - **One Shot (OS)**: Single prompt approach.
