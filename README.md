@@ -1,42 +1,85 @@
 This repository contains ontologies files 
 # Ontologies Repository
+# Paper: Ontology Engineering for Parkinson's Disease Monitoring and Alerting using Large Language Models
 
-This repository contains ontologies developed through two methodologies: Assisted Autonomy Ontology Development (AAOD) and X-HCOME (Human-Aided LLM Enhancement). These ontologies focus on Parkinson's disease monitoring and alerting, aiming to provide structured representations of knowledge in this domain.
+## Abstract
+This project demonstrates the integration of Large Language Models (LLMs) in ontology engineering for Parkinson's Disease (PD) monitoring and alerting. The proposed X-HCOME methodology, enhanced by LLMs, provides a robust approach to developing quality ontologies, showcasing notable time efficiency and comprehensive knowledge representation.
 
-## Methodologies
+## Introduction
+Ontology engineering is crucial for structuring knowledge in various domains, including healthcare. This project focuses on leveraging LLMs to improve the efficiency and accuracy of ontology development for PD monitoring and alerting.
 
-### Phase 1: Assisted Autonomy Ontology Development (AAOD)
+## Related Work
+Previous studies have explored automatic ontology extraction and alignment using various models. However, the integration of human expertise with LLMs in ontology engineering remains underexplored, motivating this research.
 
-In this phase, four state-of-the-art Large Language Models (LLMs) — GPT3.5, GPT4, Bard, and Llama2 — independently constructed the "Wear4PDmove" ontology. The methodology involved:
-- Prompt Engineer: Utilization of One Shot Prompt (OS) and Chain of Thought Prompt (CoT) approaches.
-- Prompt Formulation: Design of specialized prompts covering various facets of Parkinson's disease monitoring.
-- Prompt Refinement: Iterative refinement of prompts for enhanced relevance and accuracy.
-- Ontology Creation: Development of ontology structure within OWL covering symptoms, treatment options, progression stages, and related metrics.
-- Ontology Validation: Employing metrics including Precision, Recall, F1-score, OOPS!, Syntactical errors, and Pellet Consistency for accuracy and consistency assessment.
+## Research Methodology
+### Experiment Phases
+1. **Phase 1**: LLMs independently construct an ontology from scratch.
+2. **Phase 2-4**: Hybrid approaches where human experts and LLMs collaborate to refine the ontology.
 
-### Phase 2: X-HCOME — Human-Aided LLM Enhancement
+### Techniques Used
+- **One Shot (OS)**: Single prompt approach.
+- **Chain of Thought (CoT)**: Sequential prompting method.
+- **SimX-HCOME+**: Simulated environment for human-supervised LLM-led ontology development.
 
-Building upon AAOD, the X-HCOME methodology integrated human-defined requirements with LLM-generated frameworks. The steps included:
-- Human Task: Outline of ontology's aim, scope, requirements, and Competency Questions (CQs) by domain experts.
-- LLM Task: Development of ontology based on human-defined requirements using LLMs, output in OWL format for Protégé.
-- Human Task: Formulation of IF-THEN rules targeting ontology classes and object properties by experts.
-- LLM Task: Construction of SWRL rules adhering to provided prompts and ontology axioms by LLMs.
-- Human-LLM Collaborative Evaluation: Critical comparison and evaluation of LLM-generated ontology and rules against established framework.
+## Experimental Setup
+### Ontology Construction
+1. LLM constructs the ontology using provided data.
+2. Human compares and refines the ontology against a gold standard.
+3. Repeat the process to ensure comprehensiveness and accuracy.
 
-## Contents
+### Validation and Evaluation
+- Tools: OOPS!, Protégé
+- Metrics: Precision, Recall, F-1 Score
 
-This repository includes ontologies generated through both methodologies and any associated scripts or resources.
+## Results
+### Experiments 1 and 2
+- LLM performance and X-HCOME  in class definition consistency and syntactical correctness.
 
-## Usage
+### Experiment 3
+- Expert review and false positive analysis.
 
-The ontologies are provided in ttl format and can be opened and utilized in tools such as Protégé. Feel free to adapt or extend these ontologies to suit your specific requirements in Parkinson's disease monitoring and related research.
+### Experiment 4
+- Evaluation of SimX-HCOME+ methodology.
 
-## Contributing
+## Discussion
+### Human-LLM Collaboration
+- Enhanced structural integrity and enriched knowledge representation through human-LLM collaboration.
+- Future potential for advancing ontology engineering.
 
-Contributions to this repository are welcome. If you have developed ontologies or related resources in the domain of Parkinson's disease monitoring and alerting, feel free to submit a pull request.
+## Conclusion
+The X-HCOME and SimX-HCOME+ methodologies demonstrate the effectiveness of integrating human expertise with LLM capabilities in ontology engineering, particularly for PD monitoring and alerting.
 
 
-## Contact
+## Supplementary Material
+- [GitHub Repository](https://github.com/GiorgosBouh/Ontologies_by_LLMst): Access to code, data, and results.
 
-For inquiries or further information, you can contact [bouhouras@yahoo.com].
+
+## Directories and Files
+
+### Chain_of_Thought_or_Few_Shot_Prompts
+- **Bard_chain_of_thought_19.ttl**: A Turtle (TTL) file containing ontology data generated using the Chain of Thought method with the Bard model.
+- **GPT3.5_chain_of_thought_23.ttl**: A TTL file containing ontology data generated using the Chain of Thought method with the GPT-3.5 model.
+- **GPT4_chain_of_thought_17.ttl**: A TTL file containing ontology data generated using the Chain of Thought method with the GPT-4 model.
+- **Llama2_chain_of_thought_21.ttl**: A TTL file containing ontology data generated using the Chain of Thought method with the Llama2 model.
+
+### One_Shot_Prompt
+- **Bard_one_shot_18.ttl**: A TTL file containing ontology data generated using the One Shot prompt method with the Bard model.
+- **GPT3.5_one_shot_22.ttl**: A TTL file containing ontology data generated using the One Shot prompt method with the GPT-3.5 model.
+- **GPT4_one_shot_16.ttl**: A TTL file containing ontology data generated using the One Shot prompt method with the GPT-4 model.
+- **Llama2_one_shot_20.ttl**: A TTL file containing ontology data generated using the One Shot prompt method with the Llama2 model.
+
+### Metrics
+- Excel documents detailing the metrics used for evaluating the methodologies, X-HCOME, Expert review and X-HCOME. Also the file contains the gold ontology (WEAR4PDMOVE)
+### SimXHCOME+
+- **REPORT on SimXHCOME+.docx**: A detailed report on the SimXHCOME+ methodology.
+- **SimXHCOME+-CLAUDE-PD.ttl**: A TTL file containing ontology data generated using the SimXHCOME+ methodology with the Claude model.
+- **SimXHCOME+-GEMINI-PD.ttl**: A TTL file containing ontology data generated using the SimXHCOME+ methodology with the Gemini model.
+- **SimXHCOME+-GPT3.5-PD.ttl**: A TTL file containing ontology data generated using the SimXHCOME+ methodology with the GPT-3.5 model.
+- **SimXHCOME+-GPT4-PD.ttl**: A TTL file containing ontology data generated using the SimXHCOME+ methodology with the GPT-4 model.
+- **SWRL PD_SimXHCOME+.docx**: A Word document related to the Semantic Web Rule Language (SWRL) rules used in the SimXHCOME+ methodology.
+- **Metrics for Sim-X-HCOME+.docx**: A Word document detailing the metrics used for evaluating the Sim-X-HCOME+ methodology.
+
+### XHCOME
+- Files related to the X-HCOME generated ontologies and the prompts for this OEM
+
 
