@@ -64,5 +64,4 @@ Iterative refinement files, prompt logs, and generated ontologies specifically f
 ---
 
 ## 🔗 Supplementary Material
-* **Journal**: Submitted to *Applied Sciences (MDPI)*.
 * **GitHub Repository**: [https://github.com/GiorgosBouh/Ontologies_by_LLMst](https://github.com/GiorgosBouh/Ontologies_by_LLMst)
